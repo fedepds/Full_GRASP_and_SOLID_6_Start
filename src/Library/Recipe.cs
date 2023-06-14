@@ -62,5 +62,18 @@ namespace Full_GRASP_And_SOLID
 
             return result;
         }
+
+        // Agrego metodo int GetCookTime()
+        public int GetCookTime()
+        {
+            int total = 0;
+
+            foreach (BaseStep step in this.steps)
+            {
+                total += step.Time; // Actualizamos el código para obtener el tiempo directamente del paso
+            }
+
+            return total;
+        }
     }
 }
