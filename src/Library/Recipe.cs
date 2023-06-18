@@ -16,7 +16,7 @@ namespace Full_GRASP_And_SOLID
 
         public Product FinalProduct { get; set; }
 
-        public bool Cooked {get; private set;} = false;
+        public bool Cooked {get;  set;} = false;
 
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
@@ -79,14 +79,12 @@ namespace Full_GRASP_And_SOLID
         }
 
         //creo Cook()
-    public void Cook()
+        public void Cook()
         {
-            Cooked = false;
-            int time = GetCookTime();
-            CountdownTimer timer = new CountdownTimer();
+            CountdownTimer countdownTimer = new CountdownTimer();
+            int cookTime = GetCookTime(); // Obtenemos el tiempo de cocción total de la receta
 
-            RecipeTimerClient timerClient = new RecipeTimerClient(this);
-            timer.Register(time, timerClient);
+            countdownTimer.Register(cookTime, new CookTimerClient(this));
         }
 
     }
